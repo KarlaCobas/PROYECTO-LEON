@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Mundo de los Leones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="SCSS/style.css">
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Reyes de la Sabana</span>
+                </div>
+                <nav class="header__nav">
+                    <ul class="header__nav-list">
+                        <li class="header__nav-item"><a href="#inicio" class="header__nav-link">Inicio</a></li>
+                        <li class="header__nav-item"><a href="#historia" class="header__nav-link">Historia</a></li>
+                        <li class="header__nav-item"><a href="#curiosidades" class="header__nav-link">Curiosidades</a></li>
+                        <li class="header__nav-item"><a href="#galeria" class="header__nav-link">Galería</a></li>
+                        <li class="header__nav-item"><a href="#conservacion" class="header__nav-link">Conservación</a></li>
+                    </ul>
+                </nav>
+                <div class="header__menu-toggle" id="menuToggle">
+                    <span class="header__menu-icon"></span>
+                </div>
+            </div>
+        </div>
+        <nav class="header__mobile-nav" id="mobileNav">
+            <ul class="header__mobile-nav-list">
+                <li class="header__mobile-nav-item"><a href="#inicio" class="header__mobile-nav-link">Inicio</a></li>
+                <li class="header__mobile-nav-item"><a href="#historia" class="header__mobile-nav-link">Historia</a></li>
+                <li class="header__mobile-nav-item"><a href="#curiosidades" class="header__mobile-nav-link">Curiosidades</a></li>
+                <li class="header__mobile-nav-item"><a href="#galeria" class="header__mobile-nav-link">Galería</a></li>
+                <li class="header__mobile-nav-item"><a href="#conservacion" class="header__mobile-nav-link">Conservación</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="main">
+            <div class="main__circles">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="small-circle"></div>
+                <div class="small-circle"></div>
+                <div class="small-circle"></div>
+                <div class="small-circle"></div>
+                <div class="small-circle"></div>
+            </div>
+            
+            <div class="main__content">
+                <h1 class="main__title">
+                    <span>El</span>
+                    <span>Mundo</span>
+                    <span>de los</span>
+                    <span>Leones</span>
+                </h1>
+                <p class="main__subtitle">Descubre la majestuosidad de los reyes de la sabana</p>
+                <a href="#historia" class="main__btn">Explorar</a>
+            </div>
+            <div class="main__scroll" id="scrollDown">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <section id="historia" class="history">
+            <div class="container">
+                <h2 class="section-title fade-in">Historia de los Leones</h2>
+                <div class="history__content">
+                    <div class="history__text fade-in">
+                        <p>Los leones (Panthera leo) son una especie de mamífero carnívoro de la familia Felidae. Conocidos como "los reyes de la selva", aunque en realidad habitan principalmente en las sabanas y pastizales de África, con una pequeña población en el Bosque de Gir en India.</p>
+                        <p>Estos majestuosos animales han fascinado a la humanidad desde tiempos inmemoriales, apareciendo en mitologías, culturas y arte de diversas civilizaciones. Desde el antiguo Egipto, donde la diosa guerrera Sekhmet era representada con cabeza de leona, hasta la Roma imperial, donde eran símbolo de poder y fuerza.</p>
+                        <p>Los leones son los únicos felinos que viven en grupos sociales complejos llamados manadas. Estas manadas generalmente consisten en varias hembras emparentadas, sus crías y uno o pocos machos adultos.</p>
+                    </div>
+                    <div class="history__image fade-in">
+                        <img src="assets/about.jpg" alt="León en la sabana">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="curiosidades" class="curiosities">
+            <div class="container">
+                <h2 class="section-title fade-in">Curiosidades sobre los Leones</h2>
+                <div class="curiosities__grid">
+                    <div class="curiosity-card">
+                        <div class="curiosity-card__header">
+                            <div class="curiosity-card__icon">
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <h3 class="curiosity-card__title">Durmientes</h3>
+                        </div>
+                        <div class="curiosity-card__body">
+                            <p class="curiosity-card__text">Los leones descansan y duermen entre 16 y 20 horas al día, siendo uno de los animales más dormilones.</p>
+                        </div>
+                        <div class="curiosity-card__decoration"></div>
+                    </div>
+                    <div class="curiosity-card">
+                        <div class="curiosity-card__header">
+                            <div class="curiosity-card__icon">
+                                <i class="fas fa-volume-up"></i>
+                            </div>
+                            <h3 class="curiosity-card__title">Rugido Potente</h3>
+                        </div>
+                        <div class="curiosity-card__body">
+                            <p class="curiosity-card__text">El rugido de un león puede escucharse a hasta 8 km de distancia. Es el rugido más fuerte de cualquier felino.</p>
+                        </div>
+                        <div class="curiosity-card__decoration"></div>
+                    </div>
+                    <div class="curiosity-card">
+                        <div class="curiosity-card__header">
+                            <div class="curiosity-card__icon">
+                                <i class="fas fa-weight"></i>
+                            </div>
+                            <h3 class="curiosity-card__title">Peso Imponente</h3>
+                        </div>
+                        <div class="curiosity-card__body">
+                            <p class="curiosity-card__text">Los leones machos pueden pesar hasta 250 kg, mientras que las hembras suelen pesar alrededor de 180 kg.</p>
+                        </div>
+                        <div class="curiosity-card__decoration"></div>
+                    </div>
+                    <div class="curiosity-card">
+                        <div class="curiosity-card__header">
+                            <div class="curiosity-card__icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="curiosity-card__title">Cazadoras Expertas</h3>
+                        </div>
+                        <div class="curiosity-card__body">
+                            <p class="curiosity-card__text">Aunque los machos son más grandes, son las hembras las que realizan la mayor parte de la caza para la manada.</p>
+                        </div>
+                        <div class="curiosity-card__decoration"></div>
+                    </div>
+                    <div class="curiosity-card">
+                        <div class="curiosity-card__header">
+                            <div class="curiosity-card__icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <h3 class="curiosity-card__title">Adaptados al Calor</h3>
+                        </div>
+                        <div class="curiosity-card__body">
+                            <p class="curiosity-card__text">Los leones pueden sobrevivir largos periodos sin agua, obteniendo la hidratación necesaria de sus presas.</p>
+                        </div>
+                        <div class="curiosity-card__decoration"></div>
+                    </div>
+                    <div class="curiosity-card">
+                        <div class="curiosity-card__header">
+                            <div class="curiosity-card__icon">
+                                <i class="fas fa-child"></i>
+                            </div>
+                            <h3 class="curiosity-card__title">Crías Vulnerables</h3>
+                        </div>
+                        <div class="curiosity-card__body">
+                            <p class="curiosity-card__text">Hasta el 80% de los cachorros de león mueren antes de alcanzar los dos años de edad.</p>
+                        </div>
+                        <div class="curiosity-card__decoration"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria" class="gallery">
+            <div class="container">
+                <h2 class="section-title fade-in">Galería Fotográfica</h2>
+                <div class="gallery__grid">
+                    <div class="gallery__item">
+                        <img src="assets/galeria1.jpg" alt="galeria1">
+                    </div>
+                    <div class="gallery__item">
+                        <img src="assets/galeria2.jpg" alt="galeria2">
+                    </div>
+                    <div class="gallery__item">
+                        <img src="assets/galeria3.jpg" alt="galeria3">
+                    </div>
+                    <div class="gallery__item">
+                        <img src="assets/galeria4.jpg" alt="galeria4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conservacion" class="conservation">
+            <div class="container">
+                <h2 class="section-title fade-in">Conservación</h2>
+                <div class="conservation__content">
+                    <div class="conservation__stats">
+                        <div class="stat-card">
+                            <h3 class="stat-card__number">2300</h3>
+                            <p class="stat-card__text">Leones en estado salvaje</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="stat-card__number">43%</h3>
+                            <p class="stat-card__text">Reducción de población en las últimas 2 décadas</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="stat-card__number">90%</h3>
+                            <p class="stat-card__text">De su hábitat histórico ha desaparecido</p>
+                        </div>
+                    </div>
+                    <div class="conservation__info">
+                        <h3>Amenazas y Esfuerzos de Conservación</h3>
+                        <p>Los leones enfrentan numerosas amenazas en la actualidad, incluyendo la pérdida de hábitat debido a la expansión humana, los conflictos con el ganado, la caza furtiva y el cambio climático.</p>
+                        <p>Organizaciones de conservación en África y Asia están trabajando arduamente para proteger a estos majestuosos animales. Algunas de las estrategias incluyen:</p>
+                        <ul class="conservation__list">
+                            <li>Creación y gestión de áreas protegidas</li>
+                            <li>Programas de educación comunitaria</li>
+                            <li>Investigación y monitoreo de poblaciones</li>
+                            <li>Desarrollo de soluciones para el conflicto humano-león</li>
+                            <li>Leyes y regulaciones más estrictas contra la caza furtiva</li>
+                        </ul>
+                        <p>Tu apoyo a organizaciones dedicadas a la conservación de los leones puede marcar la diferencia en la supervivencia de esta especie icónica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <i class="fas fa-paw"></i>
+                        <span>Reyes de la Sabana</span>
+                    </div>
+                    <p>Dedicado a la conservación y difusión de información sobre los leones, los majestuosos reyes de la sabana africana. Únete a nosotros en esta misión para proteger a esta especie icónica.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#historia">Historia</a></li>
+                        <li><a href="#curiosidades">Curiosidades</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                        <li><a href="#conservacion">Conservación</a></li>
+                    </ul>
+                </div>
+                <div class="footer__social">
+                    <h4>Síguenos</h4>
+                    <div class="footer__social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__copyright">
+                <p>&copy; 2025 Reyes de la Sabana. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="JavaScript/script.js"></script>
+</body>
+</html>
