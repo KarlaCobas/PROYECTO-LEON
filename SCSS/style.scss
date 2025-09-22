@@ -12,7 +12,6 @@ $font-headings: 'Cinzel', serif;
 $font-body: 'Roboto', sans-serif;
 $overlay-color: rgba(20, 15, 10, 0.98);
 
-// Base
 * {
   box-sizing: border-box;
   margin: 0;
@@ -84,7 +83,7 @@ a {
   }
 }
 
-// ========== HEADER ==========
+// HEADER
 .header {
   position: fixed;
   top: 0;
@@ -141,7 +140,6 @@ a {
   }
 }
 
-// Overlay para el menú
 .menu-overlay {
   position: fixed;
   top: 0;
@@ -243,7 +241,7 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: url('/assets/fondo.jpg') no-repeat center center/cover;
+  background: url('assets/fondo.jpg') no-repeat center center/cover;
   position: relative;
   overflow: hidden;
   &::after {
