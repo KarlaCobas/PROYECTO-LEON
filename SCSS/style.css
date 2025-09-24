@@ -37,6 +37,20 @@ a:hover {
   max-width: 1200px;
   margin: 0 auto;
 }
+.section h2 {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+.section h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #dda202, transparent);
+}
 
 .cta-button {
   display: inline-block;
@@ -58,14 +72,21 @@ a:hover {
 
 .morphismo {
   border-radius: 12px;
-  background: linear-gradient(145deg, #6c6233, #7e4509);
-  box-shadow: -10px -10px 15px #7e4509, 10px 10px 15px #070402;
-  border: 1px solid #6c6233;
+  background: linear-gradient(145deg, rgb(252.8834080717, 190.4439461883, 21.1165919283), rgb(170.4573991031, 124.9506726457, 1.5426008969));
+  box-shadow: 0px 0px 15px #dda202, 0px 10px 15px #070402;
+  border: 1px solid rgb(145.1860986547, 106.4260089686, 1.3139013453);
   transition: transform 0.5s ease-in-out;
+}
+.morphismo h2, .morphismo h3 {
+  color: #3a2f0f;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
 }
 .morphismo:hover {
   transform: scale(1.03);
-  box-shadow: -15px -15px 22.5px #7e4509, 15px 15px 22.5px #070402;
+  box-shadow: 0px 0px 22.5px #dda202, 0px 15px 22.5px #070402;
+}
+.morphismo:hover h2, .morphismo:hover h3 {
+  color: rgb(17.4794520548, 14.1643835616, 4.5205479452);
 }
 
 .header {
@@ -109,6 +130,9 @@ a:hover {
   border-radius: 3px;
   margin: 4px 0;
   transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.3s ease;
+}
+.menu-toggle.open {
+  margin-bottom: 30px;
 }
 .menu-toggle.open .bar.top {
   transform: rotate(45deg) translate(8px, 6px);
@@ -232,7 +256,7 @@ a:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: url("assets/fondo.jpg") no-repeat center center/cover;
+  background: url("/assets/fondo.jpg") no-repeat center center/cover;
   position: relative;
   overflow: hidden;
 }
@@ -320,19 +344,30 @@ a:hover {
 }
 .curiosidades-section .card {
   padding: 2rem;
-  background-color: rgba(108, 98, 51, 0.3);
+  background-color: #dda202;
   border-radius: 12px;
-  border: 1px solid #9c6e21;
+  border: 1px solid rgb(170.4573991031, 124.9506726457, 1.5426008969);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
+  color: #3a2f0f;
 }
 .curiosidades-section .card:hover {
   transform: translateY(-10px) rotate(2deg);
-  box-shadow: 0 10px 20px rgba(221, 162, 2, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  background-color: rgb(195.7286995516, 143.4753363229, 1.7713004484);
 }
 .curiosidades-section .card h3 {
-  color: #9c6e21;
+  color: #3a2f0f;
   margin-bottom: 0.5rem;
   text-align: left;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+.curiosidades-section .card p {
+  color: rgb(17.4794520548, 14.1643835616, 4.5205479452);
+  line-height: 1.6;
+  font-weight: 500;
 }
 
 .historia-section {
@@ -381,17 +416,25 @@ a:hover {
   transform: scale(1.1);
 }
 
-.habitat-section {
-  text-align: center;
-  padding: 3rem 1rem;
+.habitat-section.morphismo h2 {
+  color: #3a2f0f;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+  margin-bottom: 2rem;
 }
-.habitat-section .habitat-content p {
+.habitat-section.morphismo .habitat-content p {
+  color: #3a2f0f;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid rgb(119.9147982063, 87.9013452915, 1.0852017937);
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
 }
-.habitat-section .habitat-content img {
+.habitat-section.morphismo .habitat-content img {
   max-width: 100%;
   height: auto;
   margin-top: 1rem;
@@ -515,6 +558,28 @@ a:hover {
   animation: bounce-in-zoom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
+.text-on-yellow {
+  color: #3a2f0f;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+}
+.text-on-yellow.large {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.text-on-yellow.small {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.card[style*="background-color: #dda202"] h3, .card[style*="background-color: #dda202"] h4, .card[style*="background-color: #dda202"] h5, .card[style*="background-color: #dda202"] h6, .card[style*="background-color: yellow"] h3, .card[style*="background-color: yellow"] h4, .card[style*="background-color: yellow"] h5, .card[style*="background-color: yellow"] h6, .card[style*="background: yellow"] h3, .card[style*="background: yellow"] h4, .card[style*="background: yellow"] h5, .card[style*="background: yellow"] h6 {
+  color: #3a2f0f;
+  font-weight: 700;
+}
+.card[style*="background-color: #dda202"] p, .card[style*="background-color: #dda202"] span, .card[style*="background-color: #dda202"] li, .card[style*="background-color: yellow"] p, .card[style*="background-color: yellow"] span, .card[style*="background-color: yellow"] li, .card[style*="background: yellow"] p, .card[style*="background: yellow"] span, .card[style*="background: yellow"] li {
+  color: rgb(17.4794520548, 14.1643835616, 4.5205479452);
+}
+
 @media (min-width: 768px) {
   .menu-toggle {
     display: none;
@@ -573,5 +638,22 @@ a:hover {
   }
   .habitat-section .habitat-content img {
     max-width: 800px;
+  }
+}
+@media (max-width: 767px) {
+  .curiosidades-section .card {
+    padding: 1.5rem;
+  }
+  .curiosidades-section .card h3 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .curiosidades-section .card p {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  .morphismo h2, .morphismo h3 {
+    font-size: 1.3rem;
+    word-wrap: break-word;
   }
 }/*# sourceMappingURL=style.css.map */

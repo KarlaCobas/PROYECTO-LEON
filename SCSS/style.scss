@@ -11,6 +11,9 @@ $morph-strength: 15px;
 $font-headings: 'Cinzel', serif;
 $font-body: 'Roboto', sans-serif;
 $overlay-color: rgba(20, 15, 10, 0.98);
+$yellow-bg-color: #dda202;
+$dark-text-color: #3a2f0f;
+$darker-yellow: #b8860b;
 
 * {
   box-sizing: border-box;
@@ -50,6 +53,22 @@ a {
   padding: 4rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  
+  h2 {
+    position: relative;
+    padding-bottom: 0.5rem;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(to right, transparent, $primary-color, transparent);
+    }
+  }
 }
 
 .cta-button {
@@ -70,16 +89,25 @@ a {
   }
 }
 
-// Efecto de morfismo
 .morphismo {
   border-radius: $border-radius;
-  background: linear-gradient(145deg, $light-grey-color, $accent-color);
-  box-shadow: -10px -10px $morph-strength $accent-color, 10px 10px $morph-strength $bg-color;
-  border: 1px solid $light-grey-color;
+  background: linear-gradient(145deg, lighten($yellow-bg-color, 10%), darken($yellow-bg-color, 10%));
+  box-shadow: 0px 0px $morph-strength $yellow-bg-color, 0px 10px $morph-strength $bg-color;
+  border: 1px solid darken($yellow-bg-color, 15%);
   transition: transform 0.5s ease-in-out;
+  
+  h2, h3 {
+    color: $dark-text-color;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
+  }
+  
   &:hover {
     transform: scale(1.03);
-    box-shadow: -15px -15px calc($morph-strength * 1.5) $accent-color, 15px 15px calc($morph-strength * 1.5) $bg-color;
+    box-shadow: 0px 0px calc($morph-strength * 1.5) $yellow-bg-color, 0px 15px calc($morph-strength * 1.5) $bg-color;
+    
+    h2, h3 {
+      color: darken($dark-text-color, 10%);
+    }
   }
 }
 
@@ -126,6 +154,7 @@ a {
     transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.3s ease;
   }
   &.open {
+    margin-bottom: 30px;
     .bar {
       &.top {
         transform: rotate(45deg) translate(8px, 6px);
@@ -241,7 +270,7 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: url('assets/fondo.jpg') no-repeat center center/cover;
+  background: url('/assets/fondo.jpg') no-repeat center center/cover;
   position: relative;
   overflow: hidden;
   &::after {
@@ -295,18 +324,32 @@ a {
   }
   .card {
     padding: 2rem;
-    background-color: rgba(108, 98, 51, 0.3);
+    background-color: $yellow-bg-color;
     border-radius: $border-radius;
-    border: 1px solid $secondary-color;
+    border: 1px solid darken($yellow-bg-color, 10%);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
+    color: $dark-text-color;
+    
     &:hover {
       transform: translateY(-10px) rotate(2deg);
-      box-shadow: 0 10px 20px rgba(221, 162, 2, 0.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      background-color: darken($yellow-bg-color, 5%);
     }
+    
     h3 {
-      color: $secondary-color;
+      color: $dark-text-color;
       margin-bottom: 0.5rem;
       text-align: left;
+      font-weight: 700;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+    }
+    
+    p {
+      color: darken($dark-text-color, 10%);
+      line-height: 1.6;
+      font-weight: 500;
     }
   }
 }
@@ -363,11 +406,22 @@ a {
 }
 
 // HABITAT SECTION
-.habitat-section {
-  text-align: center;
-  padding: 3rem 1rem;
+.habitat-section.morphismo {
+  h2 {
+    color: $dark-text-color;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+    margin-bottom: 2rem;
+  }
+  
   .habitat-content {
     p {
+      color: $dark-text-color;
+      font-weight: 500;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid darken($yellow-bg-color, 20%);
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
@@ -409,7 +463,6 @@ a {
   }
 }
 
-// ANIMACIONES 
 @keyframes title-appear {
   0% { opacity: 0; letter-spacing: 20px; }
   100% { opacity: 1; letter-spacing: normal; }
@@ -465,7 +518,37 @@ a {
   }
 }
 
-//  MEDIA QUERIES (DESKTOP) 
+.text-on-yellow {
+  color: $dark-text-color;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  
+  &.large {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  
+  &.small {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+}
+
+.card {
+  &[style*="background-color: #dda202"],
+  &[style*="background-color: yellow"],
+  &[style*="background: yellow"] {
+    h3, h4, h5, h6 {
+      color: $dark-text-color;
+      font-weight: 700;
+    }
+    
+    p, span, li {
+      color: darken($dark-text-color, 10%);
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .menu-toggle {
     display: none;
@@ -532,5 +615,30 @@ a {
   
   .habitat-section .habitat-content img {
     max-width: 800px;
+  }
+}
+
+@media (max-width: 767px) {
+  .curiosidades-section {
+    .card {
+      padding: 1.5rem;
+      
+      h3 {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      
+      p {
+        font-size: 0.95rem;
+        text-align: center;
+      }
+    }
+  }
+  
+  .morphismo {
+    h2, h3 {
+      font-size: 1.3rem;
+      word-wrap: break-word;
+    }
   }
 }
