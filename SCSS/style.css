@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -77,16 +78,18 @@ a:hover {
   border: 1px solid rgb(145.1860986547, 106.4260089686, 1.3139013453);
   transition: transform 0.5s ease-in-out;
 }
+.morphismo .text-on-yellow {
+  color: #070402;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+}
 .morphismo h2, .morphismo h3 {
-  color: #3a2f0f;
-  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
+  color: #070402;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 .morphismo:hover {
   transform: scale(1.03);
   box-shadow: 0px 0px 22.5px #dda202, 0px 15px 22.5px #070402;
-}
-.morphismo:hover h2, .morphismo:hover h3 {
-  color: rgb(17.4794520548, 14.1643835616, 4.5205479452);
 }
 
 .header {
@@ -128,20 +131,22 @@ a:hover {
   height: 3px;
   background-color: #dda202;
   border-radius: 3px;
-  margin: 4px 0;
-  transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.3s ease;
+  margin: 3px 0;
+  transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+  transform-origin: center;
 }
-.menu-toggle.open {
-  margin-bottom: 30px;
+.menu-toggle.open .bar {
+  margin: -1.5px 0;
 }
 .menu-toggle.open .bar.top {
-  transform: rotate(45deg) translate(8px, 6px);
+  transform: rotate(45deg);
 }
 .menu-toggle.open .bar.middle {
   opacity: 0;
+  transform: scale(0);
 }
 .menu-toggle.open .bar.bottom {
-  transform: rotate(-45deg) translate(8px, -6px);
+  transform: rotate(-45deg);
 }
 
 .menu-overlay {
@@ -163,7 +168,7 @@ a:hover {
 
 .nav-menu {
   position: fixed;
-  top: 50%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
   width: 90%;
@@ -297,77 +302,131 @@ a:hover {
 .main .circle-outline:nth-child(1) {
   top: 20%;
   left: 10%;
+  right: auto;
   width: 80px;
   height: 80px;
-  animation-delay: 0s;
+  animation-delay: 2s;
 }
 .main .circle-outline:nth-child(2) {
-  bottom: 30%;
+  top: 30%;
+  left: auto;
   right: 15%;
   width: 120px;
   height: 120px;
-  animation-delay: 2s;
+  animation-delay: 4s;
 }
 .main .circle-outline:nth-child(3) {
   top: 50%;
-  right: 5%;
+  left: 5%;
+  right: auto;
   width: 60px;
   height: 60px;
-  animation-delay: 4s;
+  animation-delay: 6s;
 }
 .main .circle-outline:nth-child(4) {
-  bottom: 10%;
-  left: 40%;
+  top: 10%;
+  left: auto;
+  right: 40%;
   width: 100px;
   height: 100px;
-  animation-delay: 6s;
+  animation-delay: 8s;
 }
 .main .circle-outline:nth-child(5) {
   top: 40%;
   left: 30%;
+  right: auto;
   width: 90px;
   height: 90px;
-  animation-delay: 8s;
+  animation-delay: 10s;
 }
 .main .circle-outline:nth-child(6) {
-  bottom: 20%;
-  left: 5%;
+  top: 20%;
+  left: auto;
+  right: 5%;
   width: 70px;
   height: 70px;
-  animation-delay: 10s;
+  animation-delay: 12s;
 }
 
 .curiosidades-section .curiosidades-grid {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 .curiosidades-section .card {
-  padding: 2rem;
-  background-color: #dda202;
-  border-radius: 12px;
-  border: 1px solid rgb(170.4573991031, 124.9506726457, 1.5426008969);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  color: #3a2f0f;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, rgb(54.75, 54.75, 54.75), #2a2a2a);
+  border-radius: 20px 5px 20px 5px;
+  border: 1px solid #444;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: #e0e0e0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.curiosidades-section .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #dda202, transparent);
+  transform: scaleX(0);
+  transition: transform 0.6s ease;
+}
+.curiosidades-section .card::after {
+  content: "🦁";
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+  color: #dda202;
 }
 .curiosidades-section .card:hover {
-  transform: translateY(-10px) rotate(2deg);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  background-color: rgb(195.7286995516, 143.4753363229, 1.7713004484);
+  transform: translateY(-8px) rotate(1deg);
+  border-radius: 5px 20px 5px 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 8px 25px rgba(221, 162, 2, 0.2), 0 0 0 2px rgba(221, 162, 2, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.curiosidades-section .card:hover::before {
+  transform: scaleX(1);
+}
+.curiosidades-section .card:hover::after {
+  opacity: 0.5;
 }
 .curiosidades-section .card h3 {
-  color: #3a2f0f;
-  margin-bottom: 0.5rem;
+  color: #f0f0f0;
+  margin-bottom: 1rem;
   text-align: left;
   font-weight: 700;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+.curiosidades-section .card h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #dda202, transparent);
+  transition: width 0.3s ease;
+}
+.curiosidades-section .card:hover h3::after {
+  width: 80px;
 }
 .curiosidades-section .card p {
-  color: rgb(17.4794520548, 14.1643835616, 4.5205479452);
-  line-height: 1.6;
-  font-weight: 500;
+  color: #e0e0e0;
+  line-height: 1.7;
+  font-weight: 400;
+  font-size: 1rem;
+  text-align: left;
+  position: relative;
+  z-index: 1;
 }
 
 .historia-section {
@@ -417,22 +476,24 @@ a:hover {
 }
 
 .habitat-section.morphismo h2 {
-  color: #3a2f0f;
+  color: #070402;
   font-weight: 700;
-  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   margin-bottom: 2rem;
 }
 .habitat-section.morphismo .habitat-content p {
-  color: #3a2f0f;
-  font-weight: 500;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 1rem;
+  color: #070402;
+  font-weight: 600;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
   border-radius: 8px;
-  border-left: 4px solid rgb(119.9147982063, 87.9013452915, 1.0852017937);
+  border-left: 4px solid rgba(0, 0, 0, 0.3);
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 1.7;
 }
 .habitat-section.morphismo .habitat-content img {
   max-width: 100%;
@@ -444,6 +505,7 @@ a:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border: 3px solid rgba(0, 0, 0, 0.2);
 }
 
 .conservacion-section {
@@ -558,32 +620,8 @@ a:hover {
   animation: bounce-in-zoom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-.text-on-yellow {
-  color: #3a2f0f;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
-  font-weight: 600;
-}
-.text-on-yellow.large {
-  font-size: 1.3rem;
-  font-weight: 700;
-}
-.text-on-yellow.small {
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.card[style*="background-color: #dda202"] h3, .card[style*="background-color: #dda202"] h4, .card[style*="background-color: #dda202"] h5, .card[style*="background-color: #dda202"] h6, .card[style*="background-color: yellow"] h3, .card[style*="background-color: yellow"] h4, .card[style*="background-color: yellow"] h5, .card[style*="background-color: yellow"] h6, .card[style*="background: yellow"] h3, .card[style*="background: yellow"] h4, .card[style*="background: yellow"] h5, .card[style*="background: yellow"] h6 {
-  color: #3a2f0f;
-  font-weight: 700;
-}
-.card[style*="background-color: #dda202"] p, .card[style*="background-color: #dda202"] span, .card[style*="background-color: #dda202"] li, .card[style*="background-color: yellow"] p, .card[style*="background-color: yellow"] span, .card[style*="background-color: yellow"] li, .card[style*="background: yellow"] p, .card[style*="background: yellow"] span, .card[style*="background: yellow"] li {
-  color: rgb(17.4794520548, 14.1643835616, 4.5205479452);
-}
-
 @media (min-width: 768px) {
-  .menu-toggle {
-    display: none;
-  }
+  .menu-toggle,
   .menu-overlay {
     display: none;
   }
@@ -641,19 +679,43 @@ a:hover {
   }
 }
 @media (max-width: 767px) {
+  .curiosidades-section .curiosidades-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
   .curiosidades-section .card {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
+    border-radius: 15px 3px 15px 3px;
   }
   .curiosidades-section .card h3 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-align: center;
   }
+  .curiosidades-section .card h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .curiosidades-section .card p {
-    font-size: 0.95rem;
     text-align: center;
+    font-size: 0.95rem;
+  }
+  .curiosidades-section .card:hover {
+    border-radius: 3px 15px 3px 15px;
+    transform: translateY(-5px);
   }
   .morphismo h2, .morphismo h3 {
     font-size: 1.3rem;
     word-wrap: break-word;
+  }
+}
+@media (min-width: 1024px) {
+  .curiosidades-section .curiosidades-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .curiosidades-section .card {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -1,4 +1,4 @@
-// Variables
+// Variables actualizadas
 $primary-color: #dda202;
 $secondary-color: #9c6e21;
 $accent-color: #7e4509;
@@ -11,9 +11,13 @@ $morph-strength: 15px;
 $font-headings: 'Cinzel', serif;
 $font-body: 'Roboto', sans-serif;
 $overlay-color: rgba(20, 15, 10, 0.98);
-$yellow-bg-color: #dda202;
-$dark-text-color: #3a2f0f;
-$darker-yellow: #b8860b;
+
+// Nuevos colores para las cards grisáceas
+$card-bg-color: #2a2a2a;
+$card-border-color: #444;
+$card-text-color: #e0e0e0;
+$card-title-color: #f0f0f0;
+$card-accent-color: #dda202;
 
 * {
   box-sizing: border-box;
@@ -44,6 +48,7 @@ a {
   color: $primary-color;
   text-decoration: none;
   transition: color $transition-speed ease;
+  
   &:hover {
     color: #ffca4a;
   }
@@ -82,6 +87,7 @@ a {
   border-radius: 50px;
   border: 2px solid $primary-color;
   transition: all $transition-speed ease;
+  
   &:hover {
     background-color: transparent;
     color: $primary-color;
@@ -91,23 +97,29 @@ a {
 
 .morphismo {
   border-radius: $border-radius;
-  background: linear-gradient(145deg, lighten($yellow-bg-color, 10%), darken($yellow-bg-color, 10%));
-  box-shadow: 0px 0px $morph-strength $yellow-bg-color, 0px 10px $morph-strength $bg-color;
-  border: 1px solid darken($yellow-bg-color, 15%);
+  background: linear-gradient(145deg, 
+    adjust-color($primary-color, $lightness: 10%), 
+    adjust-color($primary-color, $lightness: -10%));
+  box-shadow: 0px 0px $morph-strength $primary-color, 0px 10px $morph-strength $bg-color;
+  border: 1px solid adjust-color($primary-color, $lightness: -15%);
   transition: transform 0.5s ease-in-out;
   
+  // Texto específico para sections con fondo amarillo
+  .text-on-yellow {
+    color: $bg-color;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+  }
+  
   h2, h3 {
-    color: $dark-text-color;
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
+    color: $bg-color;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
   
   &:hover {
     transform: scale(1.03);
-    box-shadow: 0px 0px calc($morph-strength * 1.5) $yellow-bg-color, 0px 15px calc($morph-strength * 1.5) $bg-color;
-    
-    h2, h3 {
-      color: darken($dark-text-color, 10%);
-    }
+    box-shadow: 0px 0px #{$morph-strength * 1.5} $primary-color, 
+                0px 15px #{$morph-strength * 1.5} $bg-color;
   }
 }
 
@@ -132,7 +144,7 @@ a {
   font-weight: 700;
 }
 
-// Menú de hamburguesa
+// Menú de hamburguesa CORREGIDO
 .menu-toggle {
   display: flex;
   flex-direction: column;
@@ -145,25 +157,30 @@ a {
   cursor: pointer;
   z-index: 1001;
   position: relative;
+  
   .bar {
     width: 30px;
     height: 3px;
     background-color: $primary-color;
     border-radius: 3px;
-    margin: 4px 0;
-    transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.3s ease;
+    margin: 3px 0;
+    transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+    transform-origin: center;
   }
+  
   &.open {
-    margin-bottom: 30px;
     .bar {
+      margin: -1.5px 0;
+      
       &.top {
-        transform: rotate(45deg) translate(8px, 6px);
+        transform: rotate(45deg) ;
       }
       &.middle {
         opacity: 0;
+        transform: scale(0);
       }
       &.bottom {
-        transform: rotate(-45deg) translate(8px, -6px);
+        transform: rotate(-45deg) ;
       }
     }
   }
@@ -180,6 +197,7 @@ a {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.6s ease, visibility 0.6s ease;
+  
   &.open {
     opacity: 1;
     visibility: visible;
@@ -188,7 +206,7 @@ a {
 
 .nav-menu {
   position: fixed;
-  top: 50%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
   width: 90%;
@@ -205,31 +223,36 @@ a {
   visibility: hidden;
   transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1);
   z-index: 999;
+  
   &.open {
     transform: translate(-50%, 0) scale(1);
     opacity: 1;
     visibility: visible;
+    
     li {
       opacity: 1;
       transform: translateY(0);
-      &:nth-child(1) { transition-delay: 0.1s; }
-      &:nth-child(2) { transition-delay: 0.2s; }
-      &:nth-child(3) { transition-delay: 0.3s; }
-      &:nth-child(4) { transition-delay: 0.4s; }
-      &:nth-child(5) { transition-delay: 0.5s; }
-      &:nth-child(6) { transition-delay: 0.6s; }
+      
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) { 
+          transition-delay: #{$i * 0.1s}; 
+        }
+      }
     }
   }
+  
   ul {
     list-style: none;
     text-align: center;
     width: 100%;
+    
     li {
       margin: 1.2em 0;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
+    
     a {
       font-size: 1rem;
       text-transform: uppercase;
@@ -240,11 +263,13 @@ a {
       display: block;
       position: relative;
       border-radius: 8px;
+      
       &:hover {
         color: $primary-color;
         background-color: rgba(221, 162, 2, 0.1);
         transform: translateY(-3px);
       }
+      
       &::after {
         content: '';
         position: absolute;
@@ -255,6 +280,7 @@ a {
         background-color: $primary-color;
         transition: all $transition-speed ease;
       }
+      
       &:hover::after {
         width: 80%;
         left: 10%;
@@ -273,6 +299,7 @@ a {
   background: url('/assets/fondo.jpg') no-repeat center center/cover;
   position: relative;
   overflow: hidden;
+  
   &::after {
     content: '';
     position: absolute;
@@ -283,11 +310,13 @@ a {
     background-color: rgba(7, 4, 2, 0.5);
     z-index: 0;
   }
+  
   &-content {
     position: relative;
     z-index: 1;
     animation: fadeIn 2s ease-in-out;
   }
+  
   h1 {
     font-size: 2.5rem;
     text-shadow: 2px 2px 5px rgba(7, 4, 2, 0.8);
@@ -295,10 +324,12 @@ a {
     opacity: 0;
     animation: title-appear 1.5s ease-out forwards;
   }
+  
   p {
     font-size: 1.2rem;
     margin: 1rem 0 2rem;
   }
+  
   .circle-outline {
     position: absolute;
     border-radius: 50%;
@@ -306,63 +337,142 @@ a {
     pointer-events: none;
     z-index: 0;
     animation: float 15s infinite, rotate 20s linear infinite;
-    &:nth-child(1) { top: 20%; left: 10%; width: 80px; height: 80px; animation-delay: 0s; }
-    &:nth-child(2) { bottom: 30%; right: 15%; width: 120px; height: 120px; animation-delay: 2s; }
-    &:nth-child(3) { top: 50%; right: 5%; width: 60px; height: 60px; animation-delay: 4s; }
-    &:nth-child(4) { bottom: 10%; left: 40%; width: 100px; height: 100px; animation-delay: 6s; }
-    &:nth-child(5) { top: 40%; left: 30%; width: 90px; height: 90px; animation-delay: 8s; }
-    &:nth-child(6) { bottom: 20%; left: 5%; width: 70px; height: 70px; animation-delay: 10s; }
+    
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) { 
+        $sizes: (80px, 120px, 60px, 100px, 90px, 70px);
+        $positions: (
+          (20%, 10%), (30%, 15%), (50%, 5%), (10%, 40%), (40%, 30%), (20%, 5%)
+        );
+        
+        top: nth(nth($positions, $i), 1);
+        left: if($i % 2 == 0, auto, nth(nth($positions, $i), 2));
+        right: if($i % 2 == 0, nth(nth($positions, $i), 2), auto);
+        width: nth($sizes, $i);
+        height: nth($sizes, $i);
+        animation-delay: #{$i * 2}s;
+      }
+    }
   }
 }
 
-//CURIOSIDADES SECTION
+// CURIOSIDADES SECTION
 .curiosidades-section {
   .curiosidades-grid {
     display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
+  
   .card {
-    padding: 2rem;
-    background-color: $yellow-bg-color;
-    border-radius: $border-radius;
-    border: 1px solid darken($yellow-bg-color, 10%);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    color: $dark-text-color;
+    padding: 2.5rem 2rem;
+    background: linear-gradient(135deg, 
+      adjust-color($card-bg-color, $lightness: 5%), 
+      $card-bg-color);
+    border-radius: 20px 5px 20px 5px;
+    border: 1px solid $card-border-color;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    color: $card-text-color;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      0 4px 15px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, 
+        transparent, 
+        $card-accent-color, 
+        transparent);
+      transform: scaleX(0);
+      transition: transform 0.6s ease;
+    }
+    
+    &::after {
+      content: '🦁';
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      opacity: 0.2;
+      transition: opacity 0.3s ease;
+      color: $card-accent-color;
+    }
     
     &:hover {
-      transform: translateY(-10px) rotate(2deg);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      background-color: darken($yellow-bg-color, 5%);
+      transform: translateY(-8px) rotate(1deg);
+      border-radius: 5px 20px 5px 20px;
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 8px 25px rgba(221, 162, 2, 0.2),
+        0 0 0 2px rgba(221, 162, 2, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      
+      &::before {
+        transform: scaleX(1);
+      }
+      
+      &::after {
+        opacity: 0.5;
+      }
     }
     
     h3 {
-      color: $dark-text-color;
-      margin-bottom: 0.5rem;
+      color: $card-title-color;
+      margin-bottom: 1rem;
       text-align: left;
       font-weight: 700;
-      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       letter-spacing: 0.5px;
+      position: relative;
+      padding-bottom: 0.5rem;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: linear-gradient(90deg, $card-accent-color, transparent);
+        transition: width 0.3s ease;
+      }
+    }
+    
+    &:hover h3::after {
+      width: 80px;
     }
     
     p {
-      color: darken($dark-text-color, 10%);
-      line-height: 1.6;
-      font-weight: 500;
+      color: $card-text-color;
+      line-height: 1.7;
+      font-weight: 400;
+      font-size: 1rem;
+      text-align: left;
+      position: relative;
+      z-index: 1;
     }
   }
 }
 
-//HISTORIA SECTION
+// HISTORIA SECTION
 .historia-section {
   text-align: center;
+  
   p {
     margin-bottom: 1.5rem;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
   }
+  
   img {
     max-width: 100%;
     height: auto;
@@ -383,6 +493,7 @@ a {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+  
   .gallery-item {
     position: relative;
     overflow: hidden;
@@ -391,16 +502,16 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+    
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.5s ease-in-out;
     }
-    &:hover {
-      img {
-        transform: scale(1.1);
-      }
+    
+    &:hover img {
+      transform: scale(1.1);
     }
   }
 }
@@ -408,25 +519,28 @@ a {
 // HABITAT SECTION
 .habitat-section.morphismo {
   h2 {
-    color: $dark-text-color;
+    color: $bg-color;
     font-weight: 700;
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     margin-bottom: 2rem;
   }
   
   .habitat-content {
     p {
-      color: $dark-text-color;
-      font-weight: 500;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 1rem;
+      color: $bg-color;
+      font-weight: 600;
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 1.5rem;
       border-radius: 8px;
-      border-left: 4px solid darken($yellow-bg-color, 20%);
+      border-left: 4px solid rgba(0, 0, 0, 0.3);
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 2rem;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      line-height: 1.7;
     }
+    
     img {
       max-width: 100%;
       height: auto;
@@ -437,6 +551,7 @@ a {
       display: block;
       margin-left: auto;
       margin-right: auto;
+      border: 3px solid rgba(0, 0, 0, 0.2);
     }
   }
 }
@@ -444,6 +559,7 @@ a {
 // CONSERVACION SECTION
 .conservacion-section {
   text-align: center;
+  
   p {
     max-width: 800px;
     margin-left: auto;
@@ -457,105 +573,124 @@ a {
   padding: 2rem 1rem;
   background-color: $bg-color;
   border-top: 1px solid $secondary-color;
+  
   p {
     color: $light-grey-color;
     font-size: 0.9rem;
   }
 }
 
+// ANIMACIONES
 @keyframes title-appear {
-  0% { opacity: 0; letter-spacing: 20px; }
-  100% { opacity: 1; letter-spacing: normal; }
+  0% { 
+    opacity: 0; 
+    letter-spacing: 20px; 
+  }
+  100% { 
+    opacity: 1; 
+    letter-spacing: normal; 
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }
 
 @keyframes float {
-  0% { transform: translateY(0px) translateX(0px); }
-  50% { transform: translateY(-20px) translateX(20px); }
-  100% { transform: translateY(0px) translateX(0px); }
+  0% { 
+    transform: translateY(0px) translateX(0px); 
+  }
+  50% { 
+    transform: translateY(-20px) translateX(20px); 
+  }
+  100% { 
+    transform: translateY(0px) translateX(0px); 
+  }
 }
 
 @keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { 
+    transform: rotate(0deg); 
+  }
+  to { 
+    transform: rotate(360deg); 
+  }
 }
 
 @keyframes from-left {
-  from { opacity: 0; transform: translateX(-100px); }
-  to { opacity: 1; transform: translateX(0); }
+  from { 
+    opacity: 0; 
+    transform: translateX(-100px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
 }
 
 @keyframes from-right {
-  from { opacity: 0; transform: translateX(100px); }
-  to { opacity: 1; transform: translateX(0); }
+  from { 
+    opacity: 0; 
+    transform: translateX(100px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
 }
 
 @keyframes bounce-in-zoom {
-  0% { opacity: 0; transform: scale(0.8); }
-  60% { opacity: 1; transform: scale(1.1); }
-  80% { transform: scale(0.9); }
-  100% { transform: scale(1); }
+  0% { 
+    opacity: 0; 
+    transform: scale(0.8); 
+  }
+  60% { 
+    opacity: 1; 
+    transform: scale(1.1); 
+  }
+  80% { 
+    transform: scale(0.9); 
+  }
+  100% { 
+    transform: scale(1); 
+  }
 }
 
 .animate-on-scroll {
   opacity: 0;
+  
   &.in-view {
     opacity: 1;
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   }
+  
   &.from-left.in-view {
     animation: from-left 0.8s ease-out forwards;
   }
+  
   &.from-right.in-view {
     animation: from-right 0.8s ease-out forwards;
   }
+  
   &.bounce-in-zoom.in-view {
     animation: bounce-in-zoom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   }
 }
 
-.text-on-yellow {
-  color: $dark-text-color;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
-  font-weight: 600;
-  
-  &.large {
-    font-size: 1.3rem;
-    font-weight: 700;
-  }
-  
-  &.small {
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-}
-
-.card {
-  &[style*="background-color: #dda202"],
-  &[style*="background-color: yellow"],
-  &[style*="background: yellow"] {
-    h3, h4, h5, h6 {
-      color: $dark-text-color;
-      font-weight: 700;
-    }
-    
-    p, span, li {
-      color: darken($dark-text-color, 10%);
-    }
-  }
-}
-
+// MEDIA QUERIES
 @media (min-width: 768px) {
-  .menu-toggle {
-    display: none;
-  }
+  .menu-toggle,
   .menu-overlay {
     display: none;
   }
+  
   .nav-menu {
     position: static;
     height: auto;
@@ -568,23 +703,28 @@ a {
     visibility: visible;
     width: auto;
     max-width: none;
+    
     ul {
       display: flex;
+      
       li {
         margin: 0 1rem;
         transform: none;
         opacity: 1;
         transition: none;
       }
+      
       a {
         font-size: 1rem;
         color: $text-color;
         padding: 0.5rem;
+        
         &:hover {
           color: $primary-color;
           transform: none;
           background-color: transparent;
         }
+        
         &::after {
           display: none;
         }
@@ -592,11 +732,9 @@ a {
     }
   }
   
-  .galeria-section {
-    .gallery-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
+  .galeria-section .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
   
   .historia-section,
@@ -620,17 +758,33 @@ a {
 
 @media (max-width: 767px) {
   .curiosidades-section {
+    .curiosidades-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
     .card {
-      padding: 1.5rem;
+      padding: 2rem 1.5rem;
+      border-radius: 15px 3px 15px 3px;
       
       h3 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         text-align: center;
+        
+        &::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
       }
       
       p {
-        font-size: 0.95rem;
         text-align: center;
+        font-size: 0.95rem;
+      }
+      
+      &:hover {
+        border-radius: 3px 15px 3px 15px;
+        transform: translateY(-5px);
       }
     }
   }
@@ -639,6 +793,21 @@ a {
     h2, h3 {
       font-size: 1.3rem;
       word-wrap: break-word;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .curiosidades-section {
+    .curiosidades-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .card {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
   }
 }
